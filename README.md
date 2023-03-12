@@ -175,8 +175,11 @@ DESIGN IN MAGIC:
 ![image](https://user-images.githubusercontent.com/30960084/224564628-38d7f4e8-3ec8-40a1-b2d3-dfd111b1c411.png)
 
 We design cell in 3 parts:
+
 Inputs - PDKs (Process design kits), DRC & LVS rules, SPICE models, library & user-defined specs.
+
 Design Steps - Design steps of cell design involves Circuit Design, Layout Design, Characterization. The software GUNA used for characterization. The characterization can be classified as Timing characterization, Power characterization and Noise characterization.
+
 Outputs - Outputs of the Design are CDL (Circuit Description Language), GDSII, LEF, extracted Spice netlist (.cir), timing, noise, power.libs, function.
 
 # 2.3.1: INPUTS

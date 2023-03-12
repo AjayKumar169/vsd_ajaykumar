@@ -85,7 +85,7 @@ Secondly, here is how the labs were ran: (This portion includes the launching of
   ![image](https://user-images.githubusercontent.com/30960084/224561190-c854e880-f4d7-40cc-b53a-5257fb9eb8de.png)
   
 # 2 Day2 (Summary): Good Floorplan V/S Bad Floorplan and introduction to library cells:
-## Floorplanning includes the following stages:
+## 2.1 Floorplanning includes the following stages:
 ### Define Width and Height of Core and Die:
 1. Here we got familiar to certain terminologies like (Die&Core area, core utilization, aspect ratio etc.
 2. For deciding the Width and Height we basically take Utilisation factor into account.
@@ -120,3 +120,54 @@ Secondly, here is how the labs were ran: (This portion includes the launching of
 ### Logical Cell Placement Blockage
 
 This is to ensure that no logical cell is placed in the pin area.
+
+### LABS FLOORPLAN (OPENLANE)
+![image](https://user-images.githubusercontent.com/30960084/224562859-d51a91c9-f3c1-4102-90d1-0e63de3ff534.png)
+
+Output of Floorplan in results dir:
+![image](https://user-images.githubusercontent.com/30960084/224563048-d01cf3ee-f04b-42f2-aa72-1171b9da5ccc.png)
+
+Design in magic:
+![image](https://user-images.githubusercontent.com/30960084/224563410-2c6386cc-6307-49ab-a76e-5ca477d4ab84.png)
+
+![image](https://user-images.githubusercontent.com/30960084/224563487-c4d4a3b8-2cf5-4a80-9b45-617928a6e667.png)
+NOTE: (TAP cells are inserted to avoid latchup)
+
+## 2.2 Placement & Routing:
+### 2.2.1 Bind netlist with physical cells
+For binding the netlist with physical cells we will need libraries for the cells.
+
+Library file has:
+	shapes and sizes
+	delay and timing information
+	required conditions (when condition) under which condition the output is shown for a input
+	For the same gate there would be different sizes also present (bigger size cells would be faster since it has least resistance path)
+![image](https://user-images.githubusercontent.com/30960084/224563757-72deadff-cd03-41de-8e05-438b07e5aed1.png)
+
+
+### 2.2.2 Placement:
+Now we will place the mapped cells from the library over the die.
+Here are two types of placement (IN openlane flow) we are firstly focusing on the global placement.
+Global Placement - Optimized but not legal placement. Optimization works to reduce wirelength by reducing half parameter wirelength
+Detailed Placement - Legalizes placement of cells into standard cell rows while adhering to global placement
+
+Here is a summary of labs (sharing the screenshot):
+![image](https://user-images.githubusercontent.com/30960084/224563951-bfe55328-722d-4638-abae-325eb8adfda9.png)
+
+
+### 2.2.3 Optimize Placement
+
+Here is my understanding of: WHY optimisation is needed:
+![image](https://user-images.githubusercontent.com/30960084/224564034-cfc6e3cb-e8cc-402d-8a93-b754c3cd4a55.png)
+
+### LABS (PLACEMENT OPENLANE):
+![image](https://user-images.githubusercontent.com/30960084/224564111-20864dac-9df0-4b2e-ab0a-7226396f8d04.png)
+
+OUTPUT DIR:
+![image](https://user-images.githubusercontent.com/30960084/224564351-c707b15d-a45b-4ddc-818f-97916a7422bc.png)
+
+
+DESIGN IN MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/224564431-e16f8979-7e68-4fc4-9b77-691ef0f407ad.png)
+![image](https://user-images.githubusercontent.com/30960084/224564452-2f6462e4-a260-4915-ac56-b6b19108caa2.png)
+

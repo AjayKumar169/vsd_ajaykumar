@@ -171,3 +171,45 @@ DESIGN IN MAGIC:
 ![image](https://user-images.githubusercontent.com/30960084/224564431-e16f8979-7e68-4fc4-9b77-691ef0f407ad.png)
 ![image](https://user-images.githubusercontent.com/30960084/224564452-2f6462e4-a260-4915-ac56-b6b19108caa2.png)
 
+# 2.3 Standard Cell Design Flow:
+![image](https://user-images.githubusercontent.com/30960084/224564628-38d7f4e8-3ec8-40a1-b2d3-dfd111b1c411.png)
+
+We design cell in 3 parts:
+Inputs - PDKs (Process design kits), DRC & LVS rules, SPICE models, library & user-defined specs.
+Design Steps - Design steps of cell design involves Circuit Design, Layout Design, Characterization. The software GUNA used for characterization. The characterization can be classified as Timing characterization, Power characterization and Noise characterization.
+Outputs - Outputs of the Design are CDL (Circuit Description Language), GDSII, LEF, extracted Spice netlist (.cir), timing, noise, power.libs, function.
+
+# 2.3.1: INPUTS
+PDKS. DRC & LVS rules:
+	For every process we have some Design Rules for which we do the DRC checks and then post that we compare layout with schematic using LVS.
+SPICE MODELS
+	Here the device parameters like gamma, Vth etc are contained for the transistor that we include in our SPICE netlist.
+	
+Library&UserDefined Specs
+![image](https://user-images.githubusercontent.com/30960084/224564993-392afff3-5443-49bc-959a-8f0f7cc1a8b5.png)
+
+# 2.3.2: Design Steps:
+Circuit Design
+---------------
+1. Implement the function itself.
+2. Model the PMOS and NMOS transistor to meet the library requirements
+3. Mostly based on SPICE SIMULATIONS
+
+OUTPUT:
+CDL: Circuit Description Language
+
+Layout Design
+---------------
+![image](https://user-images.githubusercontent.com/30960084/224565278-fba5b910-ea68-472e-9077-fd1925980a19.png)
+
+
+
+Characterization
+----------------
+1. Extract the parasitics and characterize it in terms of timing.
+2. Output: 
+	Timing, noise, power .libs, function
+
+![image](https://user-images.githubusercontent.com/30960084/224565332-a1bcea23-7b77-47de-a806-ba788eef0d3a.png)
+
+

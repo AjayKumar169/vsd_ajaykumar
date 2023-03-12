@@ -1,19 +1,19 @@
 # vsd_ajaykumar
-#1 Day1 (Summary): Inception of opensource EDA, OpenLane & Sky130 PDK
-##1.1 How to talk to computers:
+# 1 Day1 (Summary): Inception of opensource EDA, OpenLane & Sky130 PDK
+## 1.1 How to talk to computers:
 Understanding of the basics is summarized in the below screenshots (where my inception/understanding of the concepts is also added as comments)
 ![image](https://user-images.githubusercontent.com/30960084/224394031-bf79d6e8-81cf-488c-a4fa-391695b5d970.png)
 ![image](https://user-images.githubusercontent.com/30960084/224394260-d8129a6a-9233-4cb3-a2a1-225e0c9f98be.png)
 ![image](https://user-images.githubusercontent.com/30960084/224394299-a68fa0c6-94cc-4d25-a067-110c18c6abc7.png)
 ![image](https://user-images.githubusercontent.com/30960084/224394594-0050b007-7328-4958-9c1b-81f1905da57b.png)
 
-##1.2 SOC Design and Openlane (Summary)
+## 1.2 SOC Design and Openlane (Summary)
 Here we learnt on how the complete flow is made opensource:
   a. We need RTL designs, EDA tools and PDK data (as opensource for enabling the OpenSource RTL->GDSII flow)
   b. OpenLane is nothing but a flow which combines above mentioned aspects under a single umbrella.
  ![image](https://user-images.githubusercontent.com/30960084/224560463-bf395bf0-8e61-4057-b544-ead5d69e8721.png)
 
-##1.3 Get familiar to open-source EDA tools:
+## 1.3 Get familiar to open-source EDA tools:
 
 Firstly, here is how the complete directory structure goes (had created local notes share the text itself here):
 
@@ -84,19 +84,19 @@ Secondly, here is how the labs were ran: (This portion includes the launching of
   2.Synthesis:
   ![image](https://user-images.githubusercontent.com/30960084/224561190-c854e880-f4d7-40cc-b53a-5257fb9eb8de.png)
   
-#2 Day2 (Summary): Good Floorplan V/S Bad Floorplan and introduction to library cells:
-##Floorplanning includes the following stages:
-###Define Width and Height of Core and Die:
+# 2 Day2 (Summary): Good Floorplan V/S Bad Floorplan and introduction to library cells:
+## Floorplanning includes the following stages:
+### Define Width and Height of Core and Die:
 1. Here we got familiar to certain terminologies like (Die&Core area, core utilization, aspect ratio etc.
 2. For deciding the Width and Height we basically take Utilisation factor into account.
 3. Utilisation factor of 1 means there is no scope of adding more cells. Typical value of 0.5-0.7 core utilisation is seen in several designs.
 4. Aspect ratio of 1 means that the cell is a square shaped cell in lib else a rectangular cell.
 
-###Define locations of preplaced cells
+### Define locations of preplaced cells
 1. We don't want these cells to be touched during the placement stage.
 2. Location of these cells is pre-decided based on their connectivity with other cells & boundary.
 
-###Surround the preplaced cells with decaps
+### Surround the preplaced cells with decaps
 1. Preplaced cells might demand a huge current while switching.
 2. And power grid should be able to cater the demand current need:
      i. As a solution we add decaps arround them which serve the role of catering the demand current in addition to the power grid.
@@ -104,11 +104,11 @@ Secondly, here is how the labs were ran: (This portion includes the launching of
 3.Here is the detailed study of working of decaps:
 ![image](https://user-images.githubusercontent.com/30960084/224562205-c49aa603-19a1-4937-b4a1-34b5aec5300b.png)
 
-###Power Planning
+### Power Planning
 1. We create power/ground mesh to provide power efficiently to the total demand.
 2. There might be 1000s of cells switching at a particular time, our power grid should be capable of efficiently providing the demand current.
 
-###Pin Placement
+### Pin Placement
 1. Here we identify the input/output pins in the design and place the pins in the die area.
 2. Pin placement requires little bit of hand shaking between the frontend team and the backend team.
    i. Front END:	Front end team decides the netlist and connectivity of the design.
@@ -117,6 +117,6 @@ Secondly, here is how the labs were ran: (This portion includes the launching of
    i. CLOCK IS THE PORT WHICH IS DRIVING ALL THE CELLS CONTINUOUSLY.
    ii. WE NEED LEAST RESISTANCE PATH FOR THE CLOCKS.
 
-###Logical Cell Placement Blockage
+### Logical Cell Placement Blockage
 
 This is to ensure that no logical cell is placed in the pin area.

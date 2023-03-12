@@ -212,4 +212,34 @@ Characterization
 
 ![image](https://user-images.githubusercontent.com/30960084/224565332-a1bcea23-7b77-47de-a806-ba788eef0d3a.png)
 
+TIMING CHARATERISATION:
+------------------------
+SLEW:
+slew_high_rise_thr: 20% from the logic 1 level
+slew_low_rise_thr : 20% from the logic 0 level
+slew_low_fall_thr : 20% from logic 0 level of a fall
+slew_high_fall_thr : 20% value from logic 1 of a fall
+![image](https://user-images.githubusercontent.com/30960084/224565894-5ea78095-52a2-4f8c-87eb-b5e89a4afed5.png)
+
+TRANSITION TIME:
+For rising waveform:
+Transition time = time(slew_high_rise_thr) - time(slew_low_rise_thr)
+![image](https://user-images.githubusercontent.com/30960084/224566028-5472719b-696e-4c6e-ac95-7a84dd1ae6dd.png)
+
+PROPAGATION DELAY:
+![image](https://user-images.githubusercontent.com/30960084/224566076-2674ee43-8976-4b29-aaf8-1675252205f9.png)
+
+*** NEGATIVE DELAYS (UNDERSTANDING):
+![image](https://user-images.githubusercontent.com/30960084/224566124-d76f2c63-cd8f-4cbf-a8f9-d5e24b233910.png)
+
+
+
+# 3 Day3 (Summary): Design library cell using Magic Layout and ngspice characterization:
+
+SPICE DECK CREATION FOR CMOS INVERTER:
+
+SPICE FORMAT:
+![image](https://user-images.githubusercontent.com/30960084/224566528-262006f9-2045-4af8-9f84-ea5a6e468d3c.png)
+
+
 

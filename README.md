@@ -413,9 +413,10 @@ tmp folder:
 
 tmp/merged.lef:
 would contain both:
-1. Layer Information:
+Layer Information:
 ![image](https://user-images.githubusercontent.com/30960084/225577287-be33e998-9aa0-4020-9ce0-ce9cf4ec0adc.png)
-2. Cell Information:
+
+Cell Information:
 ![image](https://user-images.githubusercontent.com/30960084/225577476-f6a80adc-4338-43db-9b28-5f1afca5208c.png)
 
 results and reports directory are also created post prepare design step: (As of now nothing would be there in stage wise directories inside these)

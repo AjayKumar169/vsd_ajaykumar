@@ -355,7 +355,8 @@ sky130A:
 ![image](https://user-images.githubusercontent.com/30960084/225565843-fff433c7-56fa-4c13-aa0e-73a24f52a461.png)
 
 libs.ref:
-![image](https://user-images.githubusercontent.com/30960084/225566422-86b3093d-bcab-45db-9a52-564b054340fd.png)
+![image](https://user-images.githubusercontent.com/30960084/225584278-9e0437da-049e-45a4-a019-884a5072c016.png)
+
 
 libs.tech:
 ![image](https://user-images.githubusercontent.com/30960084/225566693-c8d5adbe-91fd-4de3-9f18-1e9faeb59fa8.png)
@@ -417,8 +418,10 @@ tmp folder:
 
 tmp/merged.lef:
 would contain both:
-1. Layer Information:![image](https://user-images.githubusercontent.com/30960084/225577287-be33e998-9aa0-4020-9ce0-ce9cf4ec0adc.png)
-2. Cell Information: ![image](https://user-images.githubusercontent.com/30960084/225577476-f6a80adc-4338-43db-9b28-5f1afca5208c.png)
+1. Layer Information:
+![image](https://user-images.githubusercontent.com/30960084/225577287-be33e998-9aa0-4020-9ce0-ce9cf4ec0adc.png)
+2. Cell Information:
+![image](https://user-images.githubusercontent.com/30960084/225577476-f6a80adc-4338-43db-9b28-5f1afca5208c.png)
 
 results and reports directory are also created post prepare design step: (As of now nothing would be there in stage wise directories inside these)
 ![image](https://user-images.githubusercontent.com/30960084/225578187-ef3cc36f-8345-4867-941a-50de5c95ad5c.png)
@@ -460,6 +463,58 @@ yosis_4.stat.rpt for synthesis results:
 2-opensta.timing.rpt:
 ![image](https://user-images.githubusercontent.com/30960084/225583795-44be214b-76ac-44f4-8387-43dc9bf56c26.png)
 ![image](https://user-images.githubusercontent.com/30960084/225583845-e3e0bc7b-f0fb-4991-8ea2-4e67623d357a.png)
+
+# Steps to run floorplan using openlane (Day 2: Session 1: Lecture 6)
+
+We have several switches in openlane which we can use to control the floorplan results:
+We can see the switches in configuration directory in openlane:
+![image](https://user-images.githubusercontent.com/30960084/225585788-47b97c4a-e73b-47c1-b705-7fa6256d051f.png)
+
+configuration folder :
+Here for each stage we contain the default parameters.
+![image](https://user-images.githubusercontent.com/30960084/225586160-b6f8ea60-0c97-40e9-810f-6783ad1f12ef.png)
+
+README file in configuration folder contains the details of each switch per stage based:
+![image](https://user-images.githubusercontent.com/30960084/225586298-d4004713-1fcd-401f-963c-6656b92b1040.png)
+
+### run_floorplan
+![image](https://user-images.githubusercontent.com/30960084/225589033-f090e668-0007-4440-a3e7-0a1dfdad4ce8.png)
+![image](https://user-images.githubusercontent.com/30960084/225589198-0e8cddd5-f5d3-436b-b564-643a79e3b3cf.png)
+
+# Review floorplan files and steps to view floorplan (Day 2: Session 1: Lecture 7)
+
+We saw that in the runs folder .config file as picked up the value coming from .config file defined in the designs folder
+![image](https://user-images.githubusercontent.com/30960084/225613427-c43f13f0-f97f-46c3-bb27-3e00b5f378e7.png)
+
+results directory for floorplan : After floorplan stage:
+We see a DEF file saved here.
+![image](https://user-images.githubusercontent.com/30960084/225613801-7e2476d7-2fe1-4475-a649-b5dffb21adca.png)
+
+Data in DEF File:
+![image](https://user-images.githubusercontent.com/30960084/225613928-3bc05c90-7168-49c1-8776-fea06027e035.png)
+
+To see the actual layout post floorplan we use MAGIC:
+Here is the command used to open MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/225614667-8602f086-9bf9-47ed-adfa-c4bb9a59afd4.png)
+![image](https://user-images.githubusercontent.com/30960084/225614750-c7c46625-a7f2-4ca8-88ac-2114e82433b9.png)
+
+# Review floorplan layout in Magic (Day 2: Session 1: Lecture 8)
+
+Magic useful commands:
+To select press S.
+Pressing V, would fit to screen.
+Pressing Z, would zoom in the selected bboxz
+
+Seeing layer of IO pin:
+Press S to select and then in tkcon window type what:
+For Horizontal IO:
+![image](https://user-images.githubusercontent.com/30960084/225615491-7d57ea59-8a80-401f-8b37-3ac8eeaa5755.png)
+![image](https://user-images.githubusercontent.com/30960084/225615687-5b3ef00c-0c93-438c-9f83-233c9fcf8264.png)
+
+For Veritcal IO:
+![image](https://user-images.githubusercontent.com/30960084/225616110-cf404b4d-a95a-4f9c-b8f4-4550189cd1c4.png)
+
+
 
 
 Day 4: Session 3: Lecture 3

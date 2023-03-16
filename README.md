@@ -553,9 +553,94 @@ We will change the FP_IO_MODE to 2 and see what happens:
 OUTPUT IN MAGIC:
 ![image](https://user-images.githubusercontent.com/30960084/225622364-8eafdca4-36c0-4c7e-95d3-79ddbb3c050f.png)
 
-# STEPS to git clone vsdstdcelldesign (Day 3: Session 1: Lecture 5)
+# STEPS to git clone vsdstdcelldesign (Day 3: Session 2: Lecture 8)
 ![image](https://user-images.githubusercontent.com/30960084/225623312-29fe5f88-28e1-4b0d-954b-850ed2ac204a.png)
 ![image](https://user-images.githubusercontent.com/30960084/225623493-e05c35ec-c13a-45ce-9e48-64e125157327.png)
+
+Opening the INVERTER mag file in MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/225624380-58f6a1a3-3750-4749-8fbe-70ca90cf73b7.png)
+OUTPUT:
+![image](https://user-images.githubusercontent.com/30960084/225624827-a6277f8b-d939-4db3-8465-969ffd658049.png)
+
+Looking at the layer in the right side panel:
+![image](https://user-images.githubusercontent.com/30960084/225625329-e7710760-adc5-4a07-a87a-7e8d14099241.png)
+
+Checking NMOS in MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/225626100-334c8218-bdf3-4dad-8068-5ecdea4baa14.png)
+Checking PMOS in MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/225626279-c098133e-6ece-43da-9b58-48eb2735f2d2.png)
+
+Checking connectivity of the gates:
+![image](https://user-images.githubusercontent.com/30960084/225626478-52639a39-a3e6-4215-8b4a-a50e3feb2f5d.png)
+
+
+# LAB STEPS to create STD cell layout and extract spice netlist (Day 3: Session 2: Lecture 9)
+
+DRC check in MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/225628090-67bd06ec-6fed-4fb6-8119-74d579d8db9b.png)
+To know the ERROR:
+![image](https://user-images.githubusercontent.com/30960084/225628177-38c4ae2c-8b88-445a-b2c5-3f6cb82cfbd2.png)
+Tool will then zoom in to the area with error:
+![image](https://user-images.githubusercontent.com/30960084/225628304-fc0738ff-cfcd-4705-8bd5-92b40e1cf222.png)
+Details of error in tkcon:
+![image](https://user-images.githubusercontent.com/30960084/225628403-feae6ed9-3600-44d4-a4f6-2776ad39a571.png)
+
+## Extraction from Magic:
+![image](https://user-images.githubusercontent.com/30960084/225628982-e45be4d2-9bf2-4509-a150-2a9bf8436f4f.png)
+OUTPUT:
+![image](https://user-images.githubusercontent.com/30960084/225629100-b2ed88e5-4657-4fb9-a40e-ba60b6d9b806.png)
+
+## Extract SPICE from MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/225629613-9ae4cfac-6d9a-4133-9900-b072b348deae.png)
+OUTPUT:
+![image](https://user-images.githubusercontent.com/30960084/225629890-bbc25cab-0195-4fb1-8303-fe8c4b486f92.png)
+
+SPICE FILE:
+![image](https://user-images.githubusercontent.com/30960084/225630027-2c500b79-6460-4279-96b9-b1f402963059.png)
+
+
+# LAB STEPS to create final SPICE deck using SKY130 tech (Day 3: Session 3: Lecture 1 and 2)
+
+![image](https://user-images.githubusercontent.com/30960084/225632178-f7a493ac-67d5-4972-9f51-37d679a4692e.png)
+SPICE netlist defines only the below circuit as of now:
+NOTE: I've not shown the capcitances C0-C4 just to simplify the drawing....
+![image](https://user-images.githubusercontent.com/30960084/225632225-9b6bed42-c0f4-47ea-b848-a3b29309f5ac.png)
+
+Modify the units based on grid box dimensions:
+![image](https://user-images.githubusercontent.com/30960084/225633553-b8999c18-bb6b-49b7-88d2-333fd837af53.png)
+
+Modified SPICE file:
+![image](https://user-images.githubusercontent.com/30960084/225637935-ee5fdb74-543a-4f8c-bbaf-611d9cd794e1.png)
+The RED part is the added circuit:
+![image](https://user-images.githubusercontent.com/30960084/225638594-99e96515-5087-4c5f-bf30-ae0fbf3a64c1.png)
+
+OUTPUT OF SPICE SIMULATIONS:
+![image](https://user-images.githubusercontent.com/30960084/225639383-a95cddab-ad50-41cb-9071-2d2a4090cd76.png)
+
+![image](https://user-images.githubusercontent.com/30960084/225639235-6c1da782-ef3b-475f-b183-73ca4b233fbe.png)
+
+#  LAB STEPS to convert grid info to track info (Day 4: Session 1: Lecture 1)
+![image](https://user-images.githubusercontent.com/30960084/225642718-ff6ae339-3675-4b5f-9557-7d58c1d948cd.png)
+
+Track File:
+![image](https://user-images.githubusercontent.com/30960084/225644077-fedc4f40-ad51-4a55-8aba-4ee0fd35c206.png)
+![image](https://user-images.githubusercontent.com/30960084/225644142-d600e050-6b61-4567-b535-4602f5188e2e.png)
+
+Ports overlap with horizontal and vertical tracks:
+![image](https://user-images.githubusercontent.com/30960084/225644713-82cd866a-9300-411d-8710-9e2f60983207.png)
+
+Height and width is odd multiple of pitch:
+![image](https://user-images.githubusercontent.com/30960084/225646147-e2207462-6dbf-4a1e-a338-87a6b07c28db.png)
+
+
+Converting MAGIC FILE TO LEF:
+![image](https://user-images.githubusercontent.com/30960084/225646476-789a3c5c-75c2-49c0-940c-522778c44621.png)
+![image](https://user-images.githubusercontent.com/30960084/225646821-a3e79ff3-5f8a-4960-86da-8b621f4f382b.png)
+
+Saving by custom name:
+![image](https://user-images.githubusercontent.com/30960084/225647289-e802e2da-59aa-4b17-900e-16b33d4669d4.png)
+
+
 
 
 Day 4: Session 3: Lecture 3

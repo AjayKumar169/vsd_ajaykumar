@@ -514,7 +514,48 @@ For Horizontal IO:
 For Veritcal IO:
 ![image](https://user-images.githubusercontent.com/30960084/225616110-cf404b4d-a95a-4f9c-b8f4-4550189cd1c4.png)
 
+NOTE: From above results it seem, openlane takes layer as one value less then what was given in config.tcl
 
+TAP CELLS:
+TAP cells are basically meant to avoid the latch up condition in CMOS devices. They connect NWELL to VDD and subtrate to the ground.
+![image](https://user-images.githubusercontent.com/30960084/225616667-9bff3f8b-435a-4533-9869-1d57356eb440.png)
+
+Also these TAP cells are diagnolly equidistant:
+![image](https://user-images.githubusercontent.com/30960084/225617317-860a4c50-5c0a-4924-b677-834e8ec6aca6.png)
+
+# Congestion aware placement using Replace (Day 2: Session 2: Lecture 5)
+
+![image](https://user-images.githubusercontent.com/30960084/225618403-b7ad7fca-a9e6-4fe1-a0c6-b12fb42f93d8.png)
+
+## Run Floorplan:
+![image](https://user-images.githubusercontent.com/30960084/225618631-086260cd-e62c-4284-84d7-0766ed0c06b1.png)
+
+OVFL: Overflow,
+Our objective is to converge this ovfl, as this decreases that means the design is converging.
+![image](https://user-images.githubusercontent.com/30960084/225618987-194f1b4c-0ef4-447f-8099-74aa8833ad91.png)
+Placement complete:
+![image](https://user-images.githubusercontent.com/30960084/225619148-32820d91-4867-4590-afa1-8f5bebdf64fa.png)
+
+Results after placement:
+This DEF would contain the std cells also, which were missing post floorplan.
+![image](https://user-images.githubusercontent.com/30960084/225619478-b7588975-2ecb-4360-ad03-395f5c612526.png)
+
+MAGIC COMMAND and output:
+![image](https://user-images.githubusercontent.com/30960084/225619980-97215487-5aa0-4a90-9c70-1c82343daa3b.png)
+![image](https://user-images.githubusercontent.com/30960084/225619882-c0b2c59b-364e-4ee5-a2fb-e6777636b42f.png)
+
+# IO Placer revision (Day 3: Session 1: Lecture 1)
+
+In openlane we can make changes on the fly:
+Right now we have the pins to be equidistant as was seen earlier.
+We will change the FP_IO_MODE to 2 and see what happens:
+![image](https://user-images.githubusercontent.com/30960084/225621969-29f46653-6eb2-4020-b5e4-23e9f3a109c7.png)
+OUTPUT IN MAGIC:
+![image](https://user-images.githubusercontent.com/30960084/225622364-8eafdca4-36c0-4c7e-95d3-79ddbb3c050f.png)
+
+# STEPS to git clone vsdstdcelldesign (Day 3: Session 1: Lecture 5)
+![image](https://user-images.githubusercontent.com/30960084/225623312-29fe5f88-28e1-4b0d-954b-850ed2ac204a.png)
+![image](https://user-images.githubusercontent.com/30960084/225623493-e05c35ec-c13a-45ce-9e48-64e125157327.png)
 
 
 Day 4: Session 3: Lecture 3

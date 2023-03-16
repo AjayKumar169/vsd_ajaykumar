@@ -1,4 +1,7 @@
 # vsd_ajaykumar
+# NOTE: I've first covered the theory parts and later summarised all the labs
+# THEORY
+# =========
 # 1 Day1 (Summary): Inception of opensource EDA, OpenLane & Sky130 PDK
 ## 1.1 How to talk to computers:
 Understanding of the basics is summarized in the below screenshots (where my inception/understanding of the concepts is also added as comments)
@@ -341,7 +344,10 @@ When we go to multiple layers we increase the DRC rules:
 
 Resistances and Capacitances on the drawn geometries are done and used for further process.
 
+
+# =========
 # Labs:
+# =========
 
 # OpenLane directory strucutre in detail (Day 1: Session 3: Lecture 1)
 

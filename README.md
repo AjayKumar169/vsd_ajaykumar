@@ -674,7 +674,9 @@ Synthesis complete:
 ![image](https://user-images.githubusercontent.com/30960084/225694401-3ef4758f-8d71-431a-9b28-8b88b78ac00a.png)
 
 Post placement layout:
+
 ![image](https://user-images.githubusercontent.com/30960084/225732231-ff817784-d88f-4bee-bb90-006d3b3f5210.png)
 
 Routing:
+
 ![image](https://user-images.githubusercontent.com/30960084/225733090-acb00f00-b3d0-4350-a735-427079f684c8.png)

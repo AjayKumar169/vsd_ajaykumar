@@ -124,17 +124,6 @@ Secondly, here is how the labs were ran: (This portion includes the launching of
 
 This is to ensure that no logical cell is placed in the pin area.
 
-### LABS FLOORPLAN (OPENLANE)
-![image](https://user-images.githubusercontent.com/30960084/224562859-d51a91c9-f3c1-4102-90d1-0e63de3ff534.png)
-
-Output of Floorplan in results dir:
-![image](https://user-images.githubusercontent.com/30960084/224563048-d01cf3ee-f04b-42f2-aa72-1171b9da5ccc.png)
-
-Design in magic:
-![image](https://user-images.githubusercontent.com/30960084/224563410-2c6386cc-6307-49ab-a76e-5ca477d4ab84.png)
-
-![image](https://user-images.githubusercontent.com/30960084/224563487-c4d4a3b8-2cf5-4a80-9b45-617928a6e667.png)
-NOTE: (TAP cells are inserted to avoid latchup)
 
 ## 2.2 Placement & Routing:
 ### 2.2.1 Bind netlist with physical cells
@@ -154,25 +143,12 @@ Here are two types of placement (IN openlane flow) we are firstly focusing on th
 Global Placement - Optimized but not legal placement. Optimization works to reduce wirelength by reducing half parameter wirelength
 Detailed Placement - Legalizes placement of cells into standard cell rows while adhering to global placement
 
-Here is a summary of labs (sharing the screenshot):
-![image](https://user-images.githubusercontent.com/30960084/224563951-bfe55328-722d-4638-abae-325eb8adfda9.png)
-
 
 ### 2.2.3 Optimize Placement
 
 Here is my understanding of: WHY optimisation is needed:
 ![image](https://user-images.githubusercontent.com/30960084/224564034-cfc6e3cb-e8cc-402d-8a93-b754c3cd4a55.png)
 
-### LABS (PLACEMENT OPENLANE):
-![image](https://user-images.githubusercontent.com/30960084/224564111-20864dac-9df0-4b2e-ab0a-7226396f8d04.png)
-
-OUTPUT DIR:
-![image](https://user-images.githubusercontent.com/30960084/224564351-c707b15d-a45b-4ddc-818f-97916a7422bc.png)
-
-
-DESIGN IN MAGIC:
-![image](https://user-images.githubusercontent.com/30960084/224564431-e16f8979-7e68-4fc4-9b77-691ef0f407ad.png)
-![image](https://user-images.githubusercontent.com/30960084/224564452-2f6462e4-a260-4915-ac56-b6b19108caa2.png)
 
 # 2.3 Standard Cell Design Flow:
 ![image](https://user-images.githubusercontent.com/30960084/224564628-38d7f4e8-3ec8-40a1-b2d3-dfd111b1c411.png)
@@ -239,10 +215,6 @@ PROPAGATION DELAY:
 ![image](https://user-images.githubusercontent.com/30960084/224566124-d76f2c63-cd8f-4cbf-a8f9-d5e24b233910.png)
 
 
-
-
-
-
 # 3 Day3 (Summary): Design library cell using Magic Layout and ngspice characterization:
 
 SPICE DECK CREATION FOR CMOS INVERTER:
@@ -250,8 +222,25 @@ SPICE DECK CREATION FOR CMOS INVERTER:
 SPICE FORMAT:
 ![image](https://user-images.githubusercontent.com/30960084/224566528-262006f9-2045-4af8-9f84-ea5a6e468d3c.png)
 
+## 16 Mask CMOS Process Steps
+Substrate Selection : Selection of base layer on which other regions will be formed.
+Create an active region for transistors : SiO2 and Si3N2 deposited. Pockets created using photoresist and lithography.
+Nwell & Pwell formation : Pwell uses boron and nwell uses phosphorus. Drive in diffusion by placing it in a high temperature furnace.
+Creating Gate terminal : For desired threshold value NA (doping Concentration) and Cox to be set.
+Lightly Doped Drain (LDD) formation : LDD done to avoid hot electron effect and short channel effect.
+Source and Drain formation : Forming the source and drain.
+Contacts & local interconnect Creation : SiO2 removed using HF etch. Titanium deposited using sputtering.
+Higher Level metal layer formation : Upper layers of metals deposited.
+
 
 # 4 Day 4: Pre Layout timing analysis and importance of good clock tree
+
+![image](https://user-images.githubusercontent.com/30960084/225734257-5606b23e-4bb6-4ce1-8a0f-574a80d01dfe.png)
+![image](https://user-images.githubusercontent.com/30960084/225734505-7248add1-88ff-4ff7-b389-0995b7723f99.png)
+
+# STA with ideal clocks
+![image](https://user-images.githubusercontent.com/30960084/225734718-88ae3985-fd6d-46e3-978f-8bf7474b358d.png)
+
 
 ## Clock tree routing and buffering using H-Tree alogrithm
 
@@ -660,6 +649,8 @@ LEF FILE:
 
 
 #  Introduction to timing libs and steps to include new cell in synthesis (Day 4: Session 1: Lecture 3)
+
+![image](https://user-images.githubusercontent.com/30960084/225735047-3d9bfb8f-e204-47ca-8ab3-cbe4bd7f9789.png)
 
 ![image](https://user-images.githubusercontent.com/30960084/225690442-486c3ef1-96e5-4a2d-ac46-684f08f2a161.png)
 ![image](https://user-images.githubusercontent.com/30960084/225690503-3558a6c4-eef7-4171-a324-4c185133ad13.png)

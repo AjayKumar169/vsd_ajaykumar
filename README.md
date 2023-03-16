@@ -237,6 +237,9 @@ PROPAGATION DELAY:
 
 
 
+
+
+
 # 3 Day3 (Summary): Design library cell using Magic Layout and ngspice characterization:
 
 SPICE DECK CREATION FOR CMOS INVERTER:
@@ -245,4 +248,8 @@ SPICE FORMAT:
 ![image](https://user-images.githubusercontent.com/30960084/224566528-262006f9-2045-4af8-9f84-ea5a6e468d3c.png)
 
 
+# 4 Day 4: Pre Layout timing analysis and importance of good clock tree
 
+## Clock tree routing and buffering using H-Tree alogrithm
+
+### Clock Tree Syntheis:

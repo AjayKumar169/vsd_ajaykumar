@@ -632,6 +632,8 @@ Ports overlap with horizontal and vertical tracks:
 Height and width is odd multiple of pitch:
 ![image](https://user-images.githubusercontent.com/30960084/225646147-e2207462-6dbf-4a1e-a338-87a6b07c28db.png)
 
+#  LAB STEPS to convert magic layout to std cell LEF (Day 4: Session 1: Lecture 2)
+![image](https://user-images.githubusercontent.com/30960084/225690274-3efd6fe8-a622-4567-b055-00043a9d8b45.png)
 
 Converting MAGIC FILE TO LEF:
 ![image](https://user-images.githubusercontent.com/30960084/225646476-789a3c5c-75c2-49c0-940c-522778c44621.png)
@@ -640,7 +642,38 @@ Converting MAGIC FILE TO LEF:
 Saving by custom name:
 ![image](https://user-images.githubusercontent.com/30960084/225647289-e802e2da-59aa-4b17-900e-16b33d4669d4.png)
 
+Dumped out custom mag file:
+![image](https://user-images.githubusercontent.com/30960084/225658446-29f216d9-1ec4-4ff3-863d-2206f15c5d86.png)
 
+DUMP THE LEF FILE:
+![image](https://user-images.githubusercontent.com/30960084/225659348-f405e7c1-0a0d-4084-89fb-70c3c0563e49.png)
+
+LEF FILE: 
+![image](https://user-images.githubusercontent.com/30960084/225659532-5efb45a1-de68-4c1a-98fc-e48e5072bb7e.png)
+![image](https://user-images.githubusercontent.com/30960084/225659897-c06afba0-c7be-4dbe-8209-4d6697e060dc.png)
+
+
+#  Introduction to timing libs and steps to include new cell in synthesis (Day 4: Session 1: Lecture 3)
+
+![image](https://user-images.githubusercontent.com/30960084/225690442-486c3ef1-96e5-4a2d-ac46-684f08f2a161.png)
+![image](https://user-images.githubusercontent.com/30960084/225690503-3558a6c4-eef7-4171-a324-4c185133ad13.png)
+
+
+Copying all the lib files and lef file to src folder:
+I did modify the cell name in lib files as well to make the cell name as sk130_ajay
+![image](https://user-images.githubusercontent.com/30960084/225686083-63ec1a52-d2b6-4fa6-9672-39cc9f7703af.png)
+
+Config.tcl:
+![image](https://user-images.githubusercontent.com/30960084/225693559-19d4bf29-a4fe-4c62-83b1-cb3c5c8c0ad3.png)
+
+Adding our custom lef to the openlane flow:
+![image](https://user-images.githubusercontent.com/30960084/225693715-ab23c041-132f-4b9c-8588-4586b4a5cfb2.png)
+
+Here we can see that the custom cell is taken during run_synthesis step:
+![image](https://user-images.githubusercontent.com/30960084/225694242-9f9eb720-e17c-4050-8785-230500232b0c.png)
+
+Synthesis complete:
+![image](https://user-images.githubusercontent.com/30960084/225694401-3ef4758f-8d71-431a-9b28-8b88b78ac00a.png)
 
 
 Day 4: Session 3: Lecture 3

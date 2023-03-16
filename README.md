@@ -675,29 +675,8 @@ Here we can see that the custom cell is taken during run_synthesis step:
 Synthesis complete:
 ![image](https://user-images.githubusercontent.com/30960084/225694401-3ef4758f-8d71-431a-9b28-8b88b78ac00a.png)
 
+Post placement layout:
+![image](https://user-images.githubusercontent.com/30960084/225732231-ff817784-d88f-4bee-bb90-006d3b3f5210.png)
 
-Day 4: Session 3: Lecture 3
-Lab steps to run CTS using TritonCTS
-
-Day 4: Session 3: Lecture 4
-Lab steps to verify CTS runs
-
-Day 4: Session 4: Lecture 3
-Lab steps to analyze timing with real clocks using OpenSTA
-
-Day 4: Session 4: Lecture 4
-Lab steps to execute OpenSTA with right timing libraries and CTS assignment
-
-Day 4: Session 4: Lecture 5
-Lab steps to observe impact of bigger CTS buffers on setup and hold timing
-
-Day 5: Session 2: Lecture 1
-Lab steps to build power distribution network
-
-Day 5: Session 2: Lecture 2
-Lab steps from power straps to std cell power
-
-Day 5: Session 2: Lecture 3
-Basics of global and detail routing and configure TritonRoute
-
-Day 5 : Session 3 all three lectures
+Routing:
+![image](https://user-images.githubusercontent.com/30960084/225733090-acb00f00-b3d0-4350-a735-427079f684c8.png)

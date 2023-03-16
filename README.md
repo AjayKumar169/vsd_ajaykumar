@@ -18,7 +18,7 @@ Here we learnt on how the complete flow is made opensource:
 Firstly, here is how the complete directory structure goes (had created local notes share the text itself here):
 
 ---------------------------------------------
-OPENLANE RUN AREA (Basic Directory Structure
+OPENLANE RUN AREA (Basic Directory Structure)
 ---------------------------------------------
 	Desktop->work->tools->openlane_working_dir->openlane
 
@@ -253,3 +253,237 @@ SPICE FORMAT:
 ## Clock tree routing and buffering using H-Tree alogrithm
 
 ### Clock Tree Syntheis:
+Skew: Is the difference in the time taken by clock to reach different flipflops or the difference between the latency of two clock inputs. Skew should be closer to zero for good timing analysis.
+![image](https://user-images.githubusercontent.com/30960084/225530516-e958b6d9-97ee-469f-b6a2-419339f28843.png)
+
+For achieving close to zero skew we have a concept named H-Tree:
+In HTree we follow the midpoint strategy so that the time taken by the clock to reach every clock input is almost same and the skew is very close to zero.
+Here is the example of HTree:
+![image](https://user-images.githubusercontent.com/30960084/225530834-c110ae6b-c168-4e92-87ce-a1cf467676c3.png)
+
+Clock Tree Buffering:
+Problem: When a signal is being sent to a clock period, it has to travel the complete length of the wire and charge the capacitances over the path and that might lead to signal transistion time being very bad.
+![image](https://user-images.githubusercontent.com/30960084/225531244-303f946d-0b8e-420d-bd37-d4497893854e.png)
+
+Solution: Insert repeaters over the clock tree. Repeaters are nothing but buffers, only difference between the repeaters that we use for clock and the repeaters that we use for the data path is that, the clock repeaters have same rise & fall times.
+
+### Clock Net Shielding
+Clock nets are one of the critical nets in our design.
+Cross talk phenomenan can happen on our clock net.
+If there is huge coupling capacitance between a clock net and some neighboring switching net, we might see two problems:
+	1. Glitch : Due to an aggressor our victim net (clock net) might show different result (logic 0 in place of 1 or vice verca), and that's due to switching happening on the aggressor.	![image](https://user-images.githubusercontent.com/30960084/225533846-38f6b428-d498-49f2-9b3a-24cff540ef90.png)
+	2. Delta Delay: When both aggressor and victim switch we might see a delta delay during charging/discharging.
+
+
+	
+
+Solution:
+For shielding we take a particular clock net and encapsulate it to protect it from the outside world. We shield the clock net with some VDD or VSS net between the aggressor and victim. And since the VDD,VSS net won't swtich, glitch and delta delay would not happen. 
+
+NOTE: If a data net is also critical, we should shield them as well.
+
+### Timing Analysis (With Real Clocks)
+When it comes to Timing analysis with real clocks, we start considering the delay of the clock buffers also into the setup time equation.
+![image](https://user-images.githubusercontent.com/30960084/225538632-063a846b-d9b2-425d-8265-9bbf5cddc317.png)
+
+
+Data Required Time: Is the time by which the data is expected to be present.
+Data Arrival Time: Is the time at which the data arrives.
+Slack=Data Required Time - Data Arrival Time
+NOTE: Negative Slack is a violation and we should try to make it zero or positive.
+
+### Hold Timing Analysis
+Hold Time Refers to the second MUX delay in the capture Flop
+![image](https://user-images.githubusercontent.com/30960084/225540311-70f9e1ad-2a9f-4c11-9ccc-299722c972ae.png)
+
+Second MUX in the capture flop basically wants the data to be holded by first MUX till it sends the data in mid to the output. That's the hold time definition. 
+![image](https://user-images.githubusercontent.com/30960084/225540961-956ff408-5052-4703-9448-e6ade10f0e83.png)
+
+NOTE: For Hold Time Analysis Uncertaininty doesn't matter much because the clock edge going to the launch and the capture flop is same. 
+
+For Hold Timing Analysis:
+Slack= Data Arrival Time -Data Required Time
+
+# 5 Day 5: Final Steps for TRL2GDS using tritonRoute and openSTA
+
+## ROUTE
+We need to form route between two points for data path. 
+
+### LEE's Algorithm
+One Algorithm for getting the routing is Maze Routing - Lee's Algorithm [Lee 1961]
+
+Algorithm:
+Basically we divide our chip into a grid.
+The grid would be ignored for pre-placed cell region and the PIN region.
+Then we will mark the two points between which we want to have the route as SOURCE & TARGET.
+From Source we will start numbering as  1 for the horizontal/vertical adjacent boxes only. (Not the diagnols)
+We will continue the count till we reach the target.
+Then we form a path in a continous manner from 1 to n where n is number touching the target.
+Finally, out of all the possiblities we will pick up the one having least bends.
+
+![image](https://user-images.githubusercontent.com/30960084/225555506-019ba598-befc-4345-9303-99a9dede348c.png)
+
+
+### DRC Clean (Design Rule Check)
+
+Rule says that : Whenever we try to build two wires, there should be a minimum distance/spacing between the two wires.
+Some examples of rules are:
+1. Wire Width: Minimum width of wire should be some x number. Basically there are some techniques to build the wires, like photolithography, these use light to form the wires, light has got certain minimum wavelength, and using that wavelength we can draw certain minimum width of the wire.
+2. There should be some minimum pitch between two wires.
+3. Minimum wire spacing is also one of the rules.
+4. There are several other rules which are considered as DRC rules.
+
+When we go to multiple layers we increase the DRC rules:
+1. VIA Width
+2. VIA Spacing
+
+### PARASITIC EXTRACTION
+
+Resistances and Capacitances on the drawn geometries are done and used for further process.
+
+# Labs:
+
+# OpenLane directory strucutre in detail (Day 1: Session 3: Lecture 1)
+
+openlane_working_dir:
+![image](https://user-images.githubusercontent.com/30960084/225564853-74c35728-8f03-409c-9d6f-19f1e89f2e55.png)
+
+pdks:
+![image](https://user-images.githubusercontent.com/30960084/225565037-3af5d122-33ee-4d97-8a60-6fc15e5e8042.png)
+
+sky130A:
+![image](https://user-images.githubusercontent.com/30960084/225565843-fff433c7-56fa-4c13-aa0e-73a24f52a461.png)
+
+libs.ref:
+![image](https://user-images.githubusercontent.com/30960084/225566422-86b3093d-bcab-45db-9a52-564b054340fd.png)
+
+libs.tech:
+![image](https://user-images.githubusercontent.com/30960084/225566693-c8d5adbe-91fd-4de3-9f18-1e9faeb59fa8.png)
+
+libs.ref/sky130_fd_sc_hd:
+![image](https://user-images.githubusercontent.com/30960084/225567336-5c2af2af-60cb-4db0-b318-bad4322dd404.png)
+
+libs.ref/sky130_fd_sc_hd/lib:
+![image](https://user-images.githubusercontent.com/30960084/225567972-1d220505-ce83-4875-8192-c9537d65cb0e.png)
+
+lef and tech lef in libs.ref/sky130_fd_sc_hd/:
+![image](https://user-images.githubusercontent.com/30960084/225568459-b99a61fd-e5fe-4caf-a017-4e6be5f7fea1.png)
+
+openlane:
+![image](https://user-images.githubusercontent.com/30960084/225571076-342713da-1a3d-46ac-b5cd-45cba79109bf.png)
+
+openlane/designs: 
+contains close to 40-44 designs
+![image](https://user-images.githubusercontent.com/30960084/225571719-9ecfc55b-bea0-474a-878c-66b61c8893cd.png)
+
+NOTE: EVERY RUN SHOULD BE DONE IN openlane directory
+
+# Design Preparation Step (Day 1: Session 3: Lecture 2)
+
+picorv32a folder:
+![image](https://user-images.githubusercontent.com/30960084/225572348-643e0b5a-ea28-4e70-b488-c60e359de3a6.png)
+
+picorv32a/src:
+![image](https://user-images.githubusercontent.com/30960084/225572967-5853ce9b-9fad-4477-b0e8-3d6de9df733a.png)
+
+config.tcl:
+![image](https://user-images.githubusercontent.com/30960084/225573270-f5750751-160c-4da4-a7af-ce064fd2d600.png)
+
+Precedence of .tcl files:
+default < config.tcl < sky_130A_sky130_fd_sc_hd_config.tcl
+
+INVOKING OPENLANE:
+![image](https://user-images.githubusercontent.com/30960084/225575034-ab33626a-3c1b-4624-b37c-e6a6aa1116cf.png)
+
+PREPARE DESIGN IN OPENLANE:
+This step merges the cell level LEF and the Layer tech lef into one....
+![image](https://user-images.githubusercontent.com/30960084/225575270-7f8284d6-5efe-48f5-be78-8c219a536037.png)
+
+# Review Files after design Prep and run synthesis:
+
+runs directory is created post design prep stage:
+![image](https://user-images.githubusercontent.com/30960084/225575987-7c3898d3-c8a4-4d43-befd-86753ec79c20.png)
+
+Inside runs directory we will see a current date folder created which contains our run results:
+![image](https://user-images.githubusercontent.com/30960084/225576264-2ee1381c-1ea1-46a9-a94e-d331b01cf88b.png)
+
+Contents of Current Date folder:
+![image](https://user-images.githubusercontent.com/30960084/225576456-f60efbb2-10e9-4c2d-a3c6-ccee2245a8e4.png)
+
+NOTE: At this stage everything except the tmp folder would be empty:
+
+tmp folder:
+![image](https://user-images.githubusercontent.com/30960084/225576844-272ca910-5d4b-4cc7-b9e3-929bab5f104e.png)
+
+tmp/merged.lef:
+would contain both:
+1. Layer Information:![image](https://user-images.githubusercontent.com/30960084/225577287-be33e998-9aa0-4020-9ce0-ce9cf4ec0adc.png)
+2. Cell Information: ![image](https://user-images.githubusercontent.com/30960084/225577476-f6a80adc-4338-43db-9b28-5f1afca5208c.png)
+
+results and reports directory are also created post prepare design step: (As of now nothing would be there in stage wise directories inside these)
+![image](https://user-images.githubusercontent.com/30960084/225578187-ef3cc36f-8345-4867-941a-50de5c95ad5c.png)
+
+config.tcl file in current date folder would contain final parameters used:
+![image](https://user-images.githubusercontent.com/30960084/225578863-78aad5cb-b494-48cf-8b92-a40f02d755a9.png)
+
+### RUN SYNTHESIS:
+This will invoke both YOSIS syntesis and abc.
+![image](https://user-images.githubusercontent.com/30960084/225579314-b93a0125-585f-4391-9e09-826e4998d071.png)
+![image](https://user-images.githubusercontent.com/30960084/225579612-a4d39d1f-09a2-48bd-8df9-b3262e572c0c.png)
+![image](https://user-images.githubusercontent.com/30960084/225579796-6d2df2c6-5219-49f8-8343-89b94074bcf9.png)
+
+Openlane documentation: https://github.com/efabless/openlane
+
+# Steps to charaterize synthesis results (Day 1: Session 3: Lecture 5)
+Objective 1: Calculate the flop ratio: Number of dff/ total cells
+
+Sol: ![image](https://user-images.githubusercontent.com/30960084/225581294-ba2dab69-cd27-4a25-a630-ab420a9904bd.png)
+
+1613/14876=0.108429 
+10.8429%
+
+results/synthesis folder post run_synthesis step:
+![image](https://user-images.githubusercontent.com/30960084/225581826-4eeb54dd-1042-47bf-b19c-8d419f20b2f5.png)
+
+Syntesised Netlist is as shown below:
+![image](https://user-images.githubusercontent.com/30960084/225582060-a60be366-7e7e-43da-bf16-ad233dce160e.png)
+
+reports/synthesis folder post run_synthesis step:
+![image](https://user-images.githubusercontent.com/30960084/225582817-3e96e2a9-69e6-48d6-86a7-051c8fc6f5e5.png)
+
+yosis_4.stat.rpt for synthesis results:
+![image](https://user-images.githubusercontent.com/30960084/225583079-1a5b0eb9-16b5-4667-9477-53d5dd50a89b.png)
+
+2-opensta.rpt (For STA report which is pre layout):
+![image](https://user-images.githubusercontent.com/30960084/225583604-e2f9e96e-26d6-4279-b881-faf519e05e56.png)
+
+2-opensta.timing.rpt:
+![image](https://user-images.githubusercontent.com/30960084/225583795-44be214b-76ac-44f4-8387-43dc9bf56c26.png)
+![image](https://user-images.githubusercontent.com/30960084/225583845-e3e0bc7b-f0fb-4991-8ea2-4e67623d357a.png)
+
+
+Day 4: Session 3: Lecture 3
+Lab steps to run CTS using TritonCTS
+
+Day 4: Session 3: Lecture 4
+Lab steps to verify CTS runs
+
+Day 4: Session 4: Lecture 3
+Lab steps to analyze timing with real clocks using OpenSTA
+
+Day 4: Session 4: Lecture 4
+Lab steps to execute OpenSTA with right timing libraries and CTS assignment
+
+Day 4: Session 4: Lecture 5
+Lab steps to observe impact of bigger CTS buffers on setup and hold timing
+
+Day 5: Session 2: Lecture 1
+Lab steps to build power distribution network
+
+Day 5: Session 2: Lecture 2
+Lab steps from power straps to std cell power
+
+Day 5: Session 2: Lecture 3
+Basics of global and detail routing and configure TritonRoute
+
+Day 5 : Session 3 all three lectures
